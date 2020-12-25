@@ -12,7 +12,14 @@ dependencies:
   flutter:
     sdk: flutter
   flare_flutter: ^2.0.6
+  animated_splash: ^1.0.0
   introduction_screen: ^1.0.7
+  firebase_core: ^0.5.3
+  cloud_firestore: ^0.14.4
+  firebase_auth: ^0.18.4+1
+  shared_preferences: ^0.5.12+4
+
+
 
 
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'LoginPage.dart';
+import 'package:project/views/LoginPage.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
 
@@ -9,46 +9,57 @@ class SlidePages extends StatefulWidget {
 }
 
 class _SlidePagesState extends State<SlidePages> {
+
+  int index = 0;
+
   List<PageViewModel> getPages() {
     return [
+
       PageViewModel(
           decoration: PageDecoration(
               boxDecoration: BoxDecoration(
                 gradient: LinearGradient(
-                    begin: Alignment.topRight,
-                    end: Alignment.bottomLeft,
-                    colors:[const Color(0xFF283593).withOpacity(0.80), const Color(0xFF7986CB),Colors.indigo[200]]
+                  begin: Alignment.bottomRight,
+                  end: Alignment.topLeft,
+                  colors: [
+                    const Color(0xFFb29ddb), //FFCDD2
+                    const Color(0xFF7986CB) //9FA8DA
+                  ],
                 ),
               )
           ),
-          image:Container(
+          image: Container(
+            //margin: EdgeInsets.all(60.0),
             padding: EdgeInsets.only(top: 50.0),
             child: CircleAvatar(
-              backgroundImage: AssetImage('images/blue.jpeg'),
-              // backgroundColor: Colors.blue[100],
+              backgroundImage: AssetImage('images/purple.jpeg'),
+              // backgroundColor: Colors.deepPurple[100],
               // child: ClipOval(
               //   child: Image(
-              //     image: AssetImage('images/blue.jpeg'),
+              //     image: AssetImage('images/purple.jpeg'),
               //     alignment: Alignment.center,
               //   ),
               // ),
             ),
           ),
-          titleWidget: Text("Slider Page",
+          titleWidget: Text('Slider Page',
             style: TextStyle(
                 color: Colors.white,
                 fontSize: 20.0
             ),),
-          body: 'Number 1'
-        // footer: Text('bleeeh'),
+          body: "Number 1"
+        //footer: Text('bleeeh'),
       ),
       PageViewModel(
           decoration: PageDecoration(
               boxDecoration: BoxDecoration(
                 gradient: LinearGradient(
-                    begin: Alignment.topRight,
-                    end: Alignment.bottomLeft,
-                    colors:[const Color(0xFF283593).withOpacity(0.80), const Color(0xFF7986CB),Colors.indigo[200]]
+                  begin: Alignment.bottomRight,
+                  end: Alignment.topLeft,
+                  colors: [
+                    const Color(0xFFb29ddb), //FFCDD2
+                    const Color(0xFF7986CB) //9FA8DA
+                  ],
                 ),
               )
           ),
@@ -75,38 +86,41 @@ class _SlidePagesState extends State<SlidePages> {
         //footer: Text('bleeeh'),
       ),
       PageViewModel(
-        decoration: PageDecoration(
-            boxDecoration: BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topRight,
-                  end: Alignment.bottomLeft,
-                  colors:[const Color(0xFF283593).withOpacity(0.80), const Color(0xFF7986CB),Colors.indigo[200]]
-              ),
-            )
-        ),
-        image: Container(
-          padding: EdgeInsets.only(top: 50.0),
-          child: CircleAvatar(
-            backgroundImage: AssetImage('images/pink.jpeg'),
-            backgroundColor: Colors.blue[100],
-            // child: ClipOval(
-            //   child: Image(
-            //     image: AssetImage('images/pink.jpeg'),
-            //     alignment: Alignment.center,
-            //
-            //   ),
-            // ),
+          decoration: PageDecoration(
+              boxDecoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.bottomRight,
+                  end: Alignment.topLeft,
+                  colors: [
+                    const Color(0xFFb29ddb), //FFCDD2
+                    const Color(0xFF7986CB) //9FA8DA
+                  ],
+                ),
+              )
           ),
-        ),
-        //title: 'hehe',
-        titleWidget: Text('Slider Page',
-          style: TextStyle(
-              color: Colors.white,
-              fontSize: 20.0
-          ),),
-        body: 'Number 3',
+          image: Container(
+            //margin: EdgeInsets.all(60.0),
+            padding: EdgeInsets.only(top: 50.0),
+            child: CircleAvatar(
+              backgroundImage: AssetImage('images/purple.jpeg'),
+              // backgroundColor: Colors.deepPurple[100],
+              // child: ClipOval(
+              //   child: Image(
+              //     image: AssetImage('images/purple.jpeg'),
+              //     alignment: Alignment.center,
+              //   ),
+              // ),
+            ),
+          ),
+          titleWidget: Text('Slider Page',
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 20.0
+            ),),
+          body: "Number 3"
         //footer: Text('bleeeh'),
       ),
+
     ];
   }
 
@@ -119,37 +133,40 @@ class _SlidePagesState extends State<SlidePages> {
           curve: Curves.bounceInOut,
           animationDuration: 300,
           dotsDecorator: DotsDecorator(
-              activeColor: Colors.indigo[600],
-              color: Colors.indigo[300],
+              activeColor: Color(0xFF594979),
+              color: Color(0xFF907cb5),
               activeShape: RoundedRectangleBorder()
           ),
           done: FloatingActionButton(
             elevation: 5,
             backgroundColor: Colors.white,
+            onPressed: () {},
             child: IconButton(
               icon: Icon(Icons.arrow_forward_ios,
-                  color: Colors.indigo[300]),
+                  color: Color(0xFF8775a8)),
               onPressed: () {
                 Navigator.push(context,
                     PageRouteBuilder(
                         transitionDuration: Duration(milliseconds: 250),
-                        transitionsBuilder: (context, Animation<double> animation,Animation<double> secAnimation, Widget child){
-
-
+                        transitionsBuilder: (context,
+                            Animation<double> animation,
+                            Animation<double> secAnimation, Widget child) {
                           return ScaleTransition(
                               alignment: Alignment.center,
                               scale: animation,
                               child: child);
                         },
 
-                        pageBuilder: (BuildContext context, Animation<double> animation,Animation<double> secAnimation) {
+                        pageBuilder: (BuildContext context,
+                            Animation<double> animation,
+                            Animation<double> secAnimation) {
                           return LoginPage();
                         }
                     ));
               },
             ),
           ),
-          onDone: (){},
+          onDone: () {},
           pages: getPages(),
           globalBackgroundColor: Colors.deepPurple[100],
 
@@ -157,4 +174,5 @@ class _SlidePagesState extends State<SlidePages> {
       ),
     );
   }
+
 }
